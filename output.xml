@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.8 on win32)" generated="20221219 17:56:20.928" rpa="true" schemaversion="3">
+<suite id="s1" name="Tasks" source="m:\RobotTutorial2\tasks.robot">
+<test id="s1-t1" name="Order robots from RobotSpareBin Industries Inc" line="11">
+<kw name="Open website">
+<kw name="Open Available Browser" library="RPA.Browser.Selenium">
+<arg>https://robotsparebinindustries.com/#/robot-order</arg>
+<doc>Attempts to open a browser on the user's device from a set of
+supported browsers. Automatically downloads a corresponding webdriver
+if none is already installed.</doc>
+<msg timestamp="20221219 17:56:22.075" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20221219 17:56:22.082" level="INFO">====== WebDriver manager ======</msg>
+<msg timestamp="20221219 17:56:23.260" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg timestamp="20221219 17:56:24.597" level="INFO">Created Chrome browser with arguments: --disable-dev-shm-usage --disable-web-security --allow-running-insecure-content --no-sandbox</msg>
+<msg timestamp="20221219 17:56:24.597" level="INFO" html="true">&lt;p&gt;Attempted combinations:&lt;/p&gt;&lt;div class="doc"&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Browser&lt;/th&gt;&lt;th&gt;Download&lt;/th&gt;&lt;th&gt;Error&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;False&lt;/td&gt;&lt;td&gt;Message: 'chromedriver' executable needs to be in PATH. Please see https://chromedriver.chromium.org/home
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Chrome&lt;/td&gt;&lt;td&gt;True&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg timestamp="20221219 17:56:24.597" level="INFO">Opening url 'https://robotsparebinindustries.com/#/robot-order'</msg>
+<status status="PASS" starttime="20221219 17:56:22.074" endtime="20221219 17:56:26.938"/>
+</kw>
+<status status="PASS" starttime="20221219 17:56:22.074" endtime="20221219 17:56:26.939"/>
+</kw>
+<kw name="Download file and extract table">
+<var>${orders}</var>
+<kw name="Download" library="RPA.HTTP">
+<arg>https://robotsparebinindustries.com/orders.csv</arg>
+<arg>overwrite=True</arg>
+<doc>An alias for the ``HTTP Get`` keyword.</doc>
+<msg timestamp="20221219 17:56:26.941" level="INFO">Creating a new HTTP session</msg>
+<msg timestamp="20221219 17:56:26.941" level="INFO">Creating Session using : alias=rpasession_alias.httpsrobotsparebinindustries.com, url=https://robotsparebinindustries.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20221219 17:56:26.941" endtime="20221219 17:56:27.454"/>
+</kw>
+<kw name="Read table from CSV" library="RPA.Tables">
+<var>${orders}</var>
+<arg>path=orders.csv</arg>
+<arg>header=${True}</arg>
+<doc>Read a CSV file as a table.</doc>
+<msg timestamp="20221219 17:56:27.460" level="INFO">${orders} = Table(columns=['Order number', 'Head', 'Body', 'Legs', 'Address'], rows=20)</msg>
+<status status="PASS" starttime="20221219 17:56:27.454" endtime="20221219 17:56:27.460"/>
+</kw>
+<kw name="RETURN ${orders}">
+<msg timestamp="20221219 17:56:27.465" level="FAIL">No keyword with name 'RETURN ${orders}' found.</msg>
+<status status="FAIL" starttime="20221219 17:56:27.465" endtime="20221219 17:56:27.466"/>
+</kw>
+<status status="FAIL" starttime="20221219 17:56:26.940" endtime="20221219 17:56:27.466"/>
+</kw>
+<status status="FAIL" starttime="20221219 17:56:22.073" endtime="20221219 17:56:27.468">No keyword with name 'RETURN ${orders}' found.</status>
+</test>
+<doc>Solving problems for part 2 of training</doc>
+<status status="FAIL" starttime="20221219 17:56:20.953" endtime="20221219 17:56:27.469"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
